@@ -1,38 +1,87 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
+  padding: 0 5px;
+}
+
+.country {
+  max-width: 950px;
   text-align: center;
+  margin: 40px auto 40px;
+  padding: 0 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.country__flag {
+  height: 250px;
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.country__coatofarms {
+  height: 250px;
+  margin-bottom: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.text {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  font-size: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.country h1 {
+  color: darkblue;
+  color: rgb(73, 73, 206);
+  margin-bottom: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.country table {
+  width: 100%;
+  text-align: left;
+}
+.country td {
+  font-size: 20px;
+  line-height: 40px;
+  padding-left: 5px;
+}
+
+.country tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.country td:first-child {
+  width: 30%;
+}
+
+@media screen and (max-width: 520px) {
+  .country__flag {
+    width: 400px;
+    height: auto;
   }
-  to {
-    transform: rotate(360deg);
+  .country__coatofarms {
+    height: 250px;
+  }
+  .country td {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .country__flag {
+    width: 300px;
+  }
+  .country__coatofarms {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .country__flag {
+    width: 250px;
   }
 }
