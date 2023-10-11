@@ -1,5 +1,3 @@
-import Error from "../components/error/Error";
-
 const PageNotFound = () => {
   return (
     <div
