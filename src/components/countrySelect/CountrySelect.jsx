@@ -32,7 +32,7 @@ const CountrySelect = ({ showMode, inputWidth = 300 }) => {
       id="country-select-demo"
       sx={{
         width: inputWidth,
-        background: "#fff",
+        bgcolor: "background.default",
         borderRadius: "4px",
         display: showMode,
       }}

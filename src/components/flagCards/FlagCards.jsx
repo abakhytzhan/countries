@@ -13,6 +13,11 @@ const FlagCards = () => {
   const count = useSelector((state) => state.flag.value);
   const dispatch = useDispatch();
   const { data, isError, isLoading } = useGetAllCountriesQuery();
+
+  if (data && data.length === 0) {
+    return <div>No data available</div>;
+  }
+
   const countries = data?.slice(0, count);
 
   const loadHandler = () => {
@@ -28,10 +33,9 @@ const FlagCards = () => {
 
   return (
     <>
-      {data && <Counter data={data} count={count} />}
-
       {isLoading && <Loading />}
       {isError && <Error />}
+      {data && <Counter data={data} count={count} />}
       {data && (
         <>
           <div

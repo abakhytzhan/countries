@@ -4,10 +4,6 @@
   padding: 0;
 }
 
-.App {
-  padding: 0 5px;
-}
-
 .country {
   max-width: 950px;
   text-align: center;
@@ -39,22 +35,61 @@
   margin-bottom: 30px;
 }
 
-.country table {
+.quiz {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.quiz-counter {
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.quiz-counter span {
+  color: #fff;
+  text-align: center;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.dnd {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  margin: 0 auto 10px;
+}
+
+.dnd img {
+  border: 2px solid gray;
   width: 100%;
-  text-align: left;
-}
-.country td {
-  font-size: 20px;
-  line-height: 40px;
-  padding-left: 5px;
+  height: 100px;
 }
 
-.country tr:nth-child(odd) {
-  background-color: #f2f2f2;
+.dnd-column {
+  width: 190px;
 }
 
-.country td:first-child {
-  width: 30%;
+@media screen and (max-width: 850px) {
+  .quiz {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .quiz {
+    flex-direction: column;
+    width: 400px;
+  }
+
+  .quiz-counter {
+    margin-bottom: 30px;
+  }
 }
 
 @media screen and (max-width: 520px) {
@@ -65,9 +100,17 @@
   .country__coatofarms {
     height: 250px;
   }
-  .country td {
-    font-size: 16px;
-    line-height: 24px;
+
+  .quiz {
+    width: 350px;
+  }
+  .quiz img {
+    height: 150px;
+    width: 300px;
+    margin: 0 auto;
+  }
+  .quiz-counter {
+    margin: 0px 5px 20px;
   }
 }
 
@@ -77,6 +120,15 @@
   }
   .country__coatofarms {
     height: 200px;
+  }
+  .quiz {
+    width: 300px;
+  }
+  .dnd {
+    width: 300px;
+  }
+  .dnd-column {
+    width: 140px;
   }
 }
 

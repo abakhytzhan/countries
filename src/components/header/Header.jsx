@@ -14,10 +14,17 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import CountrySelect from "../countrySelect/CountrySelect";
 import { incrementByAmount } from "../flagCards/flagCardsSlice";
+import { useTheme } from "@mui/material/styles";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
-const pages = ["Flags", "Coat Of Arms"];
+import { ColorModeContext } from "../../App";
+
+const pages = ["Flags", "Coat Of Arms", "Quiz", "Drag&Drop"];
 
 const Header = () => {
+  const theme = useTheme();
+  const colorMode = React.useContext(ColorModeContext);
   const count = useSelector((state) => state.flag.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,6 +57,10 @@ const Header = () => {
     } else if (page === "Coat Of Arms") {
       dispatch(incrementByAmount(-count + 12));
       navigate("/coatofarms");
+    } else if (page === "Quiz") {
+      navigate("/quiz");
+    } else if (page === "Drag&Drop") {
+      navigate("/draganddrop");
     }
   };
 
@@ -149,6 +160,17 @@ const Header = () => {
               </Button>
             ))}
           </Box>
+          <IconButton
+            sx={{ mr: 1 }}
+            onClick={colorMode.toggleColorMode}
+            color="inherit"
+          >
+            {theme.palette.mode === "dark" ? (
+              <LightModeIcon />
+            ) : (
+              <DarkModeIcon />
+            )}
+          </IconButton>
           <CountrySelect showMode={{ xs: "none", sm: "flex" }} />
         </Toolbar>
       </Container>

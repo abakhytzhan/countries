@@ -14,6 +14,10 @@ export const CoatOfArmsCards = () => {
 
   const { data, isError, isLoading } = useGetAllCountriesQuery();
 
+  if (data && data.length === 0) {
+    return <div>No data available</div>;
+  }
+
   const countries = data?.slice(0, count);
 
   const loadHandler = () => {

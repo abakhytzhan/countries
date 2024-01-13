@@ -3,12 +3,17 @@ import { useParams } from "react-router-dom";
 import { useGetAllCountriesQuery } from "../api/apiSlice";
 import Error from "../components/error/Error";
 import Loading from "../components/loading/Loading";
+import BasicTable from "../components/table/Table";
 
 const CountryDetails = () => {
   const { data, isError, isLoading } = useGetAllCountriesQuery();
   const { countryId } = useParams();
 
   let country = [];
+
+  if (data && data.length === 0) {
+    return <div>No data available</div>;
+  }
 
   if (data) {
     if (
@@ -111,53 +116,7 @@ const CountryDetails = () => {
                 </Typography>
               </div>
             </Box>
-
-            <table className="table">
-              <tbody>
-                <tr>
-                  <td>Continents</td>
-                  <td>
-                    {country.continents.map((continent, index) => {
-                      return <p key={index}>{continent}</p>;
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td>Region</td>
-                  <td>{country.region}</td>
-                </tr>
-                <tr>
-                  <td>SubRegion</td>
-                  <td>{country.subregion}</td>
-                </tr>
-                <tr>
-                  <td>Country Code</td>
-                  <td>{country.cca2}</td>
-                </tr>
-                <tr>
-                  <td>Capital</td>
-                  <td>
-                    {country.capital.map((city, index) => {
-                      return <p key={index}>{city}</p>;
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td>Area</td>
-                  <td>
-                    {new Intl.NumberFormat("ru-RU").format(country.area)} km
-                    <sup>2</sup>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Population</td>
-                  <td>
-                    {new Intl.NumberFormat("ru-RU").format(country.population)}{" "}
-                    people
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            {country && <BasicTable country={country} />}
           </div>
         </>
       )}
